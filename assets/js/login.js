@@ -63,7 +63,7 @@ $(function () {
     var formdata = $(this).serialize();
     $.post("/api/login", formdata, function (res) {
       if (res.status === 0) {
-        window.location.href = "/index.html";
+        window.location.href = "./index.html";
         res.token.length !== 0 &&
           window.localStorage.setItem("token", res.token);
       }
