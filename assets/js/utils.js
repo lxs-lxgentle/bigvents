@@ -15,15 +15,28 @@ $.ajaxPrefilter(function (options) {
   // options.url  = 'http://ajax.frontend.itheima.net' +  /api/login
 
   // 二、统一设置请求头
-  // console.log(options.headers)
-  options.headers = {
-    Authorization: token,
+  if (!options.url.includes("/api/")) {
+    options.headers = {
+      Authorization: token,
+    };
+  }
+  // console.log(options.headers);
+  // var token = window.localStorage.getItem("token") || '';
+  // $.ajaxPrefilter(function (options) {
+  //   options.url = "http://ajax.frontend.itheima.net" + options.url;
+  //   options.hearders = {
+  //     Authorization: token,
+  //   };
+  // });]
+  //判断token 有无
+  options.complete = function (res) {
+    if (
+      res.responseJSON.status === 1 &&
+      res.responseJSON.message === "身份认证失败！"
+    ) {
+      window.localStorage.removeItem("token");
+      window.location.href = "./login.html";
+    } else {
+    }
   };
 });
-// var token = window.localStorage.getItem("token") || '';
-// $.ajaxPrefilter(function (options) {
-//   options.url = "http://ajax.frontend.itheima.net" + options.url;
-//   options.hearders = {
-//     Authorization: token,
-//   };
-// });
