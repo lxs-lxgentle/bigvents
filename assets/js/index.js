@@ -24,8 +24,8 @@ $(function () {
         }
         var resname = res.data.nickname || res.data.username;
         $("#welcome").html(resname);
-        if (res.data.use_pic) {
-          $(".layui-nav-img").attr("src", res.data.use_pic).show();
+        if (res.data.user_pic) {
+          $(".layui-nav-img").attr("src", res.data.user_pic).show();
           $(".text-avatar").hide();
         } else {
           $(".layui-nav-img").hide();

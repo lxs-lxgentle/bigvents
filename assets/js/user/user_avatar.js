@@ -15,7 +15,7 @@ $(function () {
   $("#btn-upload").on("click", function () {
     $("#file").click();
   });
-  $("#file").click(function (e) {
+  $("#file").change(function (e) {
     // e.target获取当前的input：file这个DOM=>
 
     //1.获取图片对象
@@ -25,11 +25,12 @@ $(function () {
     var newImgUrl = URL.createObjectURL(file);
     $image
       .cropper("destroy") // 销毁旧的裁剪区域
-      .attr("src", newImgURL) // 重新设置图片路径
+      .attr("src", newImgUrl) // 重新设置图片路径
       .cropper(options); // 重新初始化裁剪区域
   });
   $("#sure").on("click", function (e) {
     e.preventDefault();
+    console.log(23232323);
     var dataURL = $image
       .cropper("getCroppedCanvas", {
         height: 100,

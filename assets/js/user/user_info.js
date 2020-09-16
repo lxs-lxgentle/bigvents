@@ -12,7 +12,7 @@ $(function () {
   function initUserInfo() {
     $.get("/my/userinfo", function (res) {
       if (res.status === 0) {
-        layui.form.val("formInfor", res.data);
+        layui.form.val("formInfo", res.data);
       } else {
       }
     });

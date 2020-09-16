@@ -37,7 +37,7 @@ $(function () {
 
   $("tbody").on("click", ".btn-edit", function (e) {
     e.preventDefault();
-    var strEdiHtml = $("#tpl-add").html();
+    var strEdiHtml = $("#tpl-edit").html();
     editIndex = layui.layer.open({
       type: 1,
       area: ["500px", "250px"],
@@ -52,12 +52,12 @@ $(function () {
     });
   });
 
-  $("body").on("sbmit", "#editForm", function (e) {
+  $("body").on("submit", "#editForm", function (e) {
     e.preventDefault();
     var formdata = $(this).serialize();
     $.post("/my/article/updatecate", formdata, function (res) {
       if (res.status === 0) {
-        layui.layer.close(addIndex);
+        layui.layer.close(editIndex);
         iniTable();
       }
     });
